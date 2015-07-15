@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>ServetsTesty</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-  
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	
+	<display-name>ServetsTesty</display-name>
+	
+	<welcome-file-list>
+	
+		<welcome-file>index.html</welcome-file>
+
+	</welcome-file-list>
+	
+	<servlet>
+	
+		<servlet-name>FormularzStartowy</servlet-name>
+		
+		<servlet-class>servlets.FormularzStartowy</servlet-class>
+		
+		<init-param>
+
+			<param-name>ImieDomyslne</param-name>
+			<param-value>Anomin</param-value>
+
+		</init-param>
+
+	</servlet>
+
+	<servlet-mapping>
+	
+		<servlet-name>FormularzStartowy</servlet-name>
+		
+		<url-pattern>/FormularzStartowy</url-pattern>
+		
+	</servlet-mapping>
+	
 </web-app>

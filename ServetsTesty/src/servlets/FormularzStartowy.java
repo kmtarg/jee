@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import data.User;
 
-/**
- * Servlet implementation class FormularzStartowy
- */
-@WebServlet("/FormularzStartowy")
+
+
+// dodane url do servletu oraz domyœlne parametry podczas inicjalizacji
+
+//@WebServlet(urlPatterns="/FormularzStartowy",initParams={@WebInitParam(name= "ImieDomyslne",value="Gal")} )
+
+
+
 public class FormularzStartowy extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -70,13 +75,24 @@ public class FormularzStartowy extends HttpServlet {
 	}
 	
 	private User generujUsera(HttpServletRequest request){
+		String defImie = request.getParameter("imie");
+		
+		
 		
 		User user = new User();
-		user.setImie(request.getParameter("imie"));
+		if(defImie == null || defImie ==""){
+			user.setImie(getServletConfig().getInitParameter("ImieDomyslne"));	
+		}else
+		{
+			user.setImie(request.getParameter("imie"));
+			
+		}
+		
 		user.setNazwisko(request.getParameter("nazwisko"));
 		user.setPassword(request.getParameter("haslo"));
 		user.setPlec(request.getParameter("plec"));
 		user.setHobby(request.getParameterValues("hobby"));
+		
 		
 		return user;
 		
